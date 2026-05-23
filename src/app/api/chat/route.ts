@@ -24,7 +24,7 @@ import { hasCompletedWithSuggestions } from '@/lib/chat/stop-conditions';
 import { createUsageTracker, toConvexUsage } from '@/lib/chat/usage-tracker';
 import { prepareChatContext } from '@/lib/chat/prepare-chat-context';
 import { DELEGATION_FEEDBACK_TEXT } from '@/constants/chat';
-import { getInternalToolNamePattern } from '@/data-sources/registry';
+import { filterChatHistoryMessages } from './filter-ui-messages';
 
 const { CHAT } = AgentConfig;
 const isDev = process.env.NODE_ENV === 'development';
@@ -68,29 +68,7 @@ export async function GET(req: Request) {
         }
     }
 
-    const toolNamePattern = getInternalToolNamePattern();
-    for (const msg of uiMessages) {
-        if (msg.role !== 'assistant') continue;
-        for (const part of msg.parts) {
-            if (part.type === 'text' && toolNamePattern.test(part.text)) {
-                part.text = part.text
-                    .split('\n')
-                    .filter((line) => !toolNamePattern.test(line))
-                    .join('\n')
-                    .trim();
-            }
-        }
-    }
-
-    const filtered = uiMessages.filter((msg) => {
-        if (msg.role !== 'assistant') return true;
-        const textParts = msg.parts.filter((p) => p.type === 'text');
-        if (textParts.length !== 1) return true;
-        const text = textParts[0].text;
-        return !text.includes(DELEGATION_FEEDBACK_TEXT) && !text.includes('הסוכן החזיר תוצאות כלים');
-    });
-
-    return NextResponse.json(filtered);
+    return NextResponse.json(filterChatHistoryMessages(uiMessages));
 }
 
 // ─── POST /api/chat ─────────────────────────────────────────────────────────
