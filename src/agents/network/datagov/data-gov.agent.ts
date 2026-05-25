@@ -4,9 +4,9 @@
  * Searches and explores Israeli open datasets from data.gov.il
  */
 
-import { Agent } from '@mastra/core/agent';
+import { Agent, type AgentConfig as MastraAgentConfig } from '@mastra/core/agent';
 import { Memory } from '@mastra/memory';
-import { getMastraModelId } from '../model';
+import { getAgentModel } from '../model';
 import { DATAGOV_AGENT_CONFIG } from './config';
 import { AgentConfig } from '../../agent.config';
 import { AGENT_SCORERS } from '../../evals/eval.config';
@@ -17,8 +17,8 @@ import { TruncateToolResultsProcessor } from '../../processors/truncate-tool-res
 
 const { MEMORY } = AgentConfig;
 
-/** Factory: creates a DataGov agent with the given Mastra model ID */
-export function createDatagovAgent(modelId: string): Agent {
+/** Factory: creates a DataGov agent with the given model */
+export function createDatagovAgent(modelId: MastraAgentConfig['model']): Agent {
     return new Agent({
         id: 'datagovAgent',
         name: DATAGOV_AGENT_CONFIG.name,
@@ -39,4 +39,4 @@ export function createDatagovAgent(modelId: string): Agent {
 }
 
 /** Static default instance (backward compat) */
-export const datagovAgent = createDatagovAgent(getMastraModelId('datagov'));
+export const datagovAgent = createDatagovAgent(getAgentModel('datagov'));

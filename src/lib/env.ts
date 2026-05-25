@@ -9,8 +9,11 @@ export const EnvSchema = z.object({
     // =======================
     // AI Configuration
     // =======================
-    OPENROUTER_API_KEY: z.string(),
+    OPENROUTER_API_KEY: z.string().optional(),
+    ANTHROPIC_API_KEY: z.string().optional(),
     AI_DEFAULT_MODEL_ID: z.string().default('x-ai/grok-4.1-fast'),
+    OLLAMA_BASE_URL: z.string().optional(),
+    OLLAMA_MODEL: z.string().default('qwen2.5'),
     AI_DATAGOV_MODEL_ID: z.string().default('google/gemini-2.5-flash-lite'),
     AI_CBS_MODEL_ID: z.string().default('google/gemini-2.5-flash-lite'),
     AI_ENABLE_SCORERS: z.preprocess((val) => val === 'true' || val === '1', z.boolean()).default(false),

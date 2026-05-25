@@ -1,22 +1,29 @@
 import type { Processor } from '@mastra/core/processors';
+import type { LanguageModel } from 'ai';
 import { generateText } from 'ai';
 import { createOpenRouter } from '@openrouter/ai-sdk-provider';
 import { MastraDBMessage } from '@mastra/core/agent/message-list';
 import { ENV } from '@/lib/env';
+import { getOllamaProvider, getOllamaModelName } from '@/agents/network/ollama';
 
 export class ToolResultSummarizerProcessor implements Processor {
     id = 'tool-result-summarizer';
-    private openrouter: ReturnType<typeof createOpenRouter>;
+    private getModel: () => LanguageModel;
 
     constructor(
         private modelId: string = 'meta-llama/llama-2-70b-chat',
         private agentInstructions: string,
         private agentToolDescriptions: Record<string, string> = {},
     ) {
-        // אתחול OpenRouter עם API key מ-environment
-        this.openrouter = createOpenRouter({
-            apiKey: ENV.OPENROUTER_API_KEY,
-        });
+        const ollama = getOllamaProvider();
+        if (ollama) {
+            this.getModel = () => ollama(getOllamaModelName());
+        } else {
+            const openrouterProvider = createOpenRouter({
+                apiKey: ENV.OPENROUTER_API_KEY ?? '',
+            });
+            this.getModel = () => openrouterProvider(this.modelId);
+        }
     }
 
     async processOutputResult({
@@ -44,7 +51,7 @@ export class ToolResultSummarizerProcessor implements Processor {
                     try {
                         // קריאה למודל OpenRouter כדי לסכם את התוצאות עם הקשר מלא
                         const { text: summary } = await generateText({
-                            model: this.openrouter(this.modelId),
+                            model: this.getModel(),
                             system: `אתה עוזר חכם שמסכם תוצאות של כלים.
                             עבור סוכן בינה מלאוכתית שאלה הן הגדרותיו: 
                             ${this.agentInstructions}

@@ -87,7 +87,7 @@ export function ChatThread({ id }: ChatThreadProps) {
         id,
         messages: [] as UIMessage[],
         transport,
-        resume: true,
+        resume: !!process.env.NEXT_PUBLIC_UPSTASH_REDIS_REST_URL,
         onError: (error) => {
             console.error('[ChatThread] useChat error:', error.message);
             toast.error('חלה שגיאה. נסו שוב או פתחו שיחה חדשה.');

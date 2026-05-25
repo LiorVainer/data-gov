@@ -14,6 +14,9 @@ importers:
       '@ai-sdk-tools/store':
         specifier: ^1.2.0
         version: 1.2.0(@ai-sdk/react@3.0.51(react@19.2.3)(zod@4.3.6))(react@19.2.3)(zod@4.3.6)(zustand@5.0.10(@types/react@19.2.9)(immer@11.1.4)(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3)))
+      '@ai-sdk/anthropic':
+        specifier: ^3.0.64
+        version: 3.0.64(zod@4.3.6)
       '@ai-sdk/google':
         specifier: ^3.0.7
         version: 3.0.13(zod@4.3.6)
@@ -31,7 +34,7 @@ importers:
         version: 6.37.2(next@16.1.1(@babel/core@7.29.0)(@opentelemetry/api@1.9.0)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@convex-dev/agent':
         specifier: ^0.3.2
-        version: 0.3.2(@ai-sdk/provider-utils@4.0.9(zod@4.3.6))(ai@6.0.49(zod@4.3.6))(convex-helpers@0.1.111(@standard-schema/spec@1.1.0)(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(hono@4.12.5)(react@19.2.3)(typescript@5.9.3)(zod@4.3.6))(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(react@19.2.3)
+        version: 0.3.2(@ai-sdk/provider-utils@4.0.21(zod@4.3.6))(ai@6.0.49(zod@4.3.6))(convex-helpers@0.1.111(@standard-schema/spec@1.1.0)(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(hono@4.12.5)(react@19.2.3)(typescript@5.9.3)(zod@4.3.6))(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(react@19.2.3)
       '@convex-dev/rag':
         specifier: ^0.7.0
         version: 0.7.0(@convex-dev/workpool@0.3.1(convex-helpers@0.1.111(@standard-schema/spec@1.1.0)(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(hono@4.12.5)(react@19.2.3)(typescript@5.9.3)(zod@4.3.6))(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)))(convex-helpers@0.1.111(@standard-schema/spec@1.1.0)(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(hono@4.12.5)(react@19.2.3)(typescript@5.9.3)(zod@4.3.6))(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(zod@4.3.6)
@@ -59,6 +62,9 @@ importers:
       '@mastra/sentry':
         specifier: 1.0.5
         version: 1.0.5(@mastra/core@1.10.0(@standard-community/standard-json@0.3.5(@standard-schema/spec@1.1.0)(@types/json-schema@7.0.15)(quansync@0.2.11)(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6))(@standard-community/standard-openapi@0.2.9(@standard-community/standard-json@0.3.5(@standard-schema/spec@1.1.0)(@types/json-schema@7.0.15)(quansync@0.2.11)(zod-to-json-schema@3.25.1(zod@4.3.6))(zod@4.3.6))(@standard-schema/spec@1.1.0)(openapi-types@12.1.3)(zod@4.3.6))(@types/json-schema@7.0.15)(openapi-types@12.1.3)(zod@4.3.6))
+      '@modelcontextprotocol/sdk':
+        specifier: ^1.28.0
+        version: 1.28.0(zod@4.3.6)
       '@nivo/bar':
         specifier: ^0.99.0
         version: 0.99.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -335,7 +341,7 @@ importers:
         version: 3.8.1
       shadcn:
         specifier: ^3.6.3
-        version: 3.7.0(@types/node@20.19.30)(babel-plugin-macros@3.1.0)(hono@4.12.5)(typescript@5.9.3)
+        version: 3.7.0(@types/node@20.19.30)(babel-plugin-macros@3.1.0)(typescript@5.9.3)
       tailwindcss:
         specifier: ^4
         version: 4.1.18
@@ -375,6 +381,12 @@ packages:
       '@ai-sdk/react': '>=2.0.0'
       react: '>=18.0.0'
       zustand: '>=5.0.0'
+
+  '@ai-sdk/anthropic@3.0.64':
+    resolution: {integrity: sha512-rwLi/Rsuj2pYniQXIrvClHvXDzgM4UQHHnvHTWEF14efnlKclG/1ghpNC+adsRujAbCTr6gRsSbDE2vEqriV7g==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
 
   '@ai-sdk/gateway@2.0.29':
     resolution: {integrity: sha512-1b7E9F/B5gex/1uCkhs+sGIbH0KsZOItHnNz3iY5ir+nc4ZUA6WOU5Cu2w1USlc+3UVbhf+H+iNLlxVjLe4VvQ==}
@@ -418,6 +430,12 @@ packages:
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
 
+  '@ai-sdk/provider-utils@4.0.21':
+    resolution: {integrity: sha512-MtFUYI1/8mgDvRmaBDjbLJPFFrMG777AvSgyIFQtZHIMzm88R/12vYBBpnk7pfiWLFE1DSZzY4WDYzGbKAcmiw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.25.76 || ^4.1.8
+
   '@ai-sdk/provider-utils@4.0.9':
     resolution: {integrity: sha512-bB4r6nfhBOpmoS9mePxjRoCy+LnzP3AfhyMGCkGL4Mn9clVNlqEeKj26zEKEtB6yoSVcT1IQ0Zh9fytwMCDnow==}
     engines: {node: '>=18'}
@@ -442,6 +460,10 @@ packages:
 
   '@ai-sdk/provider@3.0.5':
     resolution: {integrity: sha512-2Xmoq6DBJqmSl80U6V9z5jJSJP7ehaJJQMy2iFUqTay06wdCqTnPVBBQbtEL8RCChenL+q5DC5H5WzU3vV3v8w==}
+    engines: {node: '>=18'}
+
+  '@ai-sdk/provider@3.0.8':
+    resolution: {integrity: sha512-oGMAgGoQdBXbZqNG0Ze56CHjDZ1IDYOwGYxYjO5KLSlz5HiNQ9udIXsPZ61VWaHGZ5XW/jyjmr6t2xz2jGVwbQ==}
     engines: {node: '>=18'}
 
   '@ai-sdk/react@3.0.51':
@@ -1554,8 +1576,8 @@ packages:
       '@mastra/core': '>=1.7.1-0 <2.0.0-0'
       zod: ^3.25.0 || ^4.0.0
 
-  '@modelcontextprotocol/sdk@1.25.3':
-    resolution: {integrity: sha512-vsAMBMERybvYgKbg/l4L1rhS7VXV1c0CtyJg72vwxONVX0l4ZfKVAnZEWTQixJGTzKnELjQ59e4NbdFDALRiAQ==}
+  '@modelcontextprotocol/sdk@1.28.0':
+    resolution: {integrity: sha512-gmloF+i+flI8ouQK7MWW4mOwuMh4RePBuPFAEPC6+pdqyWOUMDOixb6qZ69owLJpz6XmyllCouc4t8YWO+E2Nw==}
     engines: {node: '>=18'}
     peerDependencies:
       '@cfworker/json-schema': ^4.1.1
@@ -5391,8 +5413,8 @@ packages:
     resolution: {integrity: sha512-knvyeauYhqjOYvQ66MznSMs83wmHrCycNEN6Ao+2AeYEfxUIkuiVxdEa1qlGEPK+We3n0THiDciYSsCcgW/DoA==}
     engines: {node: '>=12.0.0'}
 
-  express-rate-limit@7.5.1:
-    resolution: {integrity: sha512-7iN8iPMDzOMHPUYllBEsQdWVB6fPDMPqwjBaFrgr4Jgr/+okjvzAy+UHlYYL/Vs0OsOrMkwS6PJDkFlJwoxUnw==}
+  express-rate-limit@8.3.1:
+    resolution: {integrity: sha512-D1dKN+cmyPWuvB+G2SREQDzPY1agpBIcTa9sJxOPMCNeH3gwzhqJRDWCXW3gg0y//+LQ/8j52JbMROWyrKdMdw==}
     engines: {node: '>= 16'}
     peerDependencies:
       express: '>= 4.11'
@@ -5850,6 +5872,10 @@ packages:
   internmap@2.0.3:
     resolution: {integrity: sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==}
     engines: {node: '>=12'}
+
+  ip-address@10.1.0:
+    resolution: {integrity: sha512-XXADHxXmvT9+CRxhXg56LJovE+bmWnEWB78LB83VZTprKTmaC5QfruXocxzTZ2Kl0DNwKuBdlIhjL8LeY8Sf8Q==}
+    engines: {node: '>= 12'}
 
   ipaddr.js@1.9.1:
     resolution: {integrity: sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==}
@@ -8323,6 +8349,12 @@ snapshots:
     transitivePeerDependencies:
       - zod
 
+  '@ai-sdk/anthropic@3.0.64(zod@4.3.6)':
+    dependencies:
+      '@ai-sdk/provider': 3.0.8
+      '@ai-sdk/provider-utils': 4.0.21(zod@4.3.6)
+      zod: 4.3.6
+
   '@ai-sdk/gateway@2.0.29(zod@4.3.6)':
     dependencies:
       '@ai-sdk/provider': 2.0.1
@@ -8370,6 +8402,13 @@ snapshots:
       eventsource-parser: 3.0.6
       zod: 4.3.6
 
+  '@ai-sdk/provider-utils@4.0.21(zod@4.3.6)':
+    dependencies:
+      '@ai-sdk/provider': 3.0.8
+      '@standard-schema/spec': 1.1.0
+      eventsource-parser: 3.0.6
+      zod: 4.3.6
+
   '@ai-sdk/provider-utils@4.0.9(zod@4.3.6)':
     dependencies:
       '@ai-sdk/provider': 3.0.5
@@ -8394,6 +8433,10 @@ snapshots:
       json-schema: 0.4.0
 
   '@ai-sdk/provider@3.0.5':
+    dependencies:
+      json-schema: 0.4.0
+
+  '@ai-sdk/provider@3.0.8':
     dependencies:
       json-schema: 0.4.0
 
@@ -8826,9 +8869,9 @@ snapshots:
       - react
       - react-dom
 
-  '@convex-dev/agent@0.3.2(@ai-sdk/provider-utils@4.0.9(zod@4.3.6))(ai@6.0.49(zod@4.3.6))(convex-helpers@0.1.111(@standard-schema/spec@1.1.0)(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(hono@4.12.5)(react@19.2.3)(typescript@5.9.3)(zod@4.3.6))(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(react@19.2.3)':
+  '@convex-dev/agent@0.3.2(@ai-sdk/provider-utils@4.0.21(zod@4.3.6))(ai@6.0.49(zod@4.3.6))(convex-helpers@0.1.111(@standard-schema/spec@1.1.0)(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(hono@4.12.5)(react@19.2.3)(typescript@5.9.3)(zod@4.3.6))(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(react@19.2.3)':
     dependencies:
-      '@ai-sdk/provider-utils': 4.0.9(zod@4.3.6)
+      '@ai-sdk/provider-utils': 4.0.21(zod@4.3.6)
       ai: 6.0.49(zod@4.3.6)
       convex: 1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3)
       convex-helpers: 0.1.111(@standard-schema/spec@1.1.0)(convex@1.31.6(@clerk/clerk-react@5.60.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react@19.2.3))(hono@4.12.5)(react@19.2.3)(typescript@5.9.3)(zod@4.3.6)
@@ -9486,7 +9529,7 @@ snapshots:
       '@isaacs/ttlcache': 2.1.4
       '@lukeed/uuid': 2.0.1
       '@mastra/schema-compat': 1.1.3(zod@4.3.6)
-      '@modelcontextprotocol/sdk': 1.25.3(hono@4.12.5)(zod@4.3.6)
+      '@modelcontextprotocol/sdk': 1.28.0(zod@4.3.6)
       '@sindresorhus/slugify': 2.2.1
       dotenv: 17.3.1
       execa: 9.6.1
@@ -9629,7 +9672,7 @@ snapshots:
       hono: 4.12.5
       zod: 4.3.6
 
-  '@modelcontextprotocol/sdk@1.25.3(hono@4.12.5)(zod@3.25.76)':
+  '@modelcontextprotocol/sdk@1.28.0(zod@3.25.76)':
     dependencies:
       '@hono/node-server': 1.19.9(hono@4.12.5)
       ajv: 8.17.1
@@ -9640,7 +9683,8 @@ snapshots:
       eventsource: 3.0.7
       eventsource-parser: 3.0.6
       express: 5.2.1
-      express-rate-limit: 7.5.1(express@5.2.1)
+      express-rate-limit: 8.3.1(express@5.2.1)
+      hono: 4.12.5
       jose: 6.1.3
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.1
@@ -9648,10 +9692,9 @@ snapshots:
       zod: 3.25.76
       zod-to-json-schema: 3.25.1(zod@3.25.76)
     transitivePeerDependencies:
-      - hono
       - supports-color
 
-  '@modelcontextprotocol/sdk@1.25.3(hono@4.12.5)(zod@4.3.6)':
+  '@modelcontextprotocol/sdk@1.28.0(zod@4.3.6)':
     dependencies:
       '@hono/node-server': 1.19.9(hono@4.12.5)
       ajv: 8.17.1
@@ -9662,7 +9705,8 @@ snapshots:
       eventsource: 3.0.7
       eventsource-parser: 3.0.6
       express: 5.2.1
-      express-rate-limit: 7.5.1(express@5.2.1)
+      express-rate-limit: 8.3.1(express@5.2.1)
+      hono: 4.12.5
       jose: 6.1.3
       json-schema-typed: 8.0.2
       pkce-challenge: 5.0.1
@@ -9670,7 +9714,6 @@ snapshots:
       zod: 4.3.6
       zod-to-json-schema: 3.25.1(zod@4.3.6)
     transitivePeerDependencies:
-      - hono
       - supports-color
 
   '@mswjs/interceptors@0.40.0':
@@ -13818,9 +13861,10 @@ snapshots:
 
   expect-type@1.3.0: {}
 
-  express-rate-limit@7.5.1(express@5.2.1):
+  express-rate-limit@8.3.1(express@5.2.1):
     dependencies:
       express: 5.2.1
+      ip-address: 10.1.0
 
   express@4.22.1:
     dependencies:
@@ -14377,6 +14421,8 @@ snapshots:
   internmap@1.0.1: {}
 
   internmap@2.0.3: {}
+
+  ip-address@10.1.0: {}
 
   ipaddr.js@1.9.1: {}
 
@@ -16248,7 +16294,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@3.7.0(@types/node@20.19.30)(babel-plugin-macros@3.1.0)(hono@4.12.5)(typescript@5.9.3):
+  shadcn@3.7.0(@types/node@20.19.30)(babel-plugin-macros@3.1.0)(typescript@5.9.3):
     dependencies:
       '@antfu/ni': 25.0.0
       '@babel/core': 7.28.6
@@ -16256,7 +16302,7 @@ snapshots:
       '@babel/plugin-transform-typescript': 7.28.6(@babel/core@7.28.6)
       '@babel/preset-typescript': 7.28.5(@babel/core@7.28.6)
       '@dotenvx/dotenvx': 1.52.0
-      '@modelcontextprotocol/sdk': 1.25.3(hono@4.12.5)(zod@3.25.76)
+      '@modelcontextprotocol/sdk': 1.28.0(zod@3.25.76)
       '@types/validate-npm-package-name': 4.0.2
       browserslist: 4.28.1
       commander: 14.0.2
@@ -16288,7 +16334,6 @@ snapshots:
       - '@cfworker/json-schema'
       - '@types/node'
       - babel-plugin-macros
-      - hono
       - supports-color
       - typescript
 

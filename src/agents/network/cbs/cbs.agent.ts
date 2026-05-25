@@ -5,9 +5,9 @@
  * price indices, CPI calculations, and locality dictionary.
  */
 
-import { Agent } from '@mastra/core/agent';
+import { Agent, type AgentConfig as MastraAgentConfig } from '@mastra/core/agent';
 import { Memory } from '@mastra/memory';
-import { getMastraModelId } from '../model';
+import { getAgentModel } from '../model';
 import { CBS_AGENT_CONFIG } from './config';
 import { AgentConfig } from '../../agent.config';
 import { AGENT_SCORERS } from '../../evals/eval.config';
@@ -18,8 +18,8 @@ import { TruncateToolResultsProcessor } from '../../processors/truncate-tool-res
 
 const { MEMORY } = AgentConfig;
 
-/** Factory: creates a CBS agent with the given Mastra model ID */
-export function createCbsAgent(modelId: string): Agent {
+/** Factory: creates a CBS agent with the given model */
+export function createCbsAgent(modelId: MastraAgentConfig['model']): Agent {
     return new Agent({
         id: 'cbsAgent',
         name: CBS_AGENT_CONFIG.name,
@@ -40,4 +40,4 @@ export function createCbsAgent(modelId: string): Agent {
 }
 
 /** Static default instance (backward compat) */
-export const cbsAgent = createCbsAgent(getMastraModelId('cbs'));
+export const cbsAgent = createCbsAgent(getAgentModel('cbs'));

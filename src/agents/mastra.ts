@@ -16,6 +16,7 @@ import { createDatagovAgent } from './network/datagov/data-gov.agent';
 import { createCbsAgent } from './network/cbs/cbs.agent';
 import { MASTRA_SCORERS } from './evals/eval.config';
 import { ENV } from '@/lib/env';
+import { getOllamaProvider, getOllamaModelName } from './network/ollama';
 
 const convexUrl = ENV.NEXT_PUBLIC_CONVEX_URL;
 const convexAdminKey = ENV.CONVEX_ADMIN_KEY;
@@ -75,20 +76,30 @@ let cachedMastra: Mastra | null = null;
 /**
  * Creates (or returns cached) Mastra instance with the specified per-agent models.
  * Model IDs should be OpenRouter format (e.g., 'google/gemini-3-flash-preview').
- * The function prefixes them with 'openrouter/' for Mastra's model format.
+ * When OLLAMA_BASE_URL is set, uses the Ollama provider for all agents.
+ * Otherwise, prefixes model IDs with 'openrouter/' for Mastra's model format.
  */
 export function getMastraWithModels(config: AgentModelConfig): Mastra {
-    const configKey = JSON.stringify(config);
+    const ollama = getOllamaProvider();
+    const configKey = JSON.stringify({ ...config, ollama: !!ollama });
 
     if (cachedConfigKey === configKey && cachedMastra) {
         return cachedMastra;
     }
 
-    console.log({ config });
+    console.log({ config, usingOllama: !!ollama });
 
-    const newDatagov = createDatagovAgent(`openrouter/${config.datagov}`);
-    const newCbs = createCbsAgent(`openrouter/${config.cbs}`);
-    const newRouting = createRoutingAgent(`openrouter/${config.routing}`, {
+    const resolveModel = (modelId: string) => {
+        if (ollama) return ollama(getOllamaModelName());
+        if (process.env.ANTHROPIC_API_KEY && modelId.startsWith('claude-')) {
+            return `anthropic/${modelId}`;
+        }
+        return `openrouter/${modelId}`;
+    };
+
+    const newDatagov = createDatagovAgent(resolveModel(config.datagov));
+    const newCbs = createCbsAgent(resolveModel(config.cbs));
+    const newRouting = createRoutingAgent(resolveModel(config.routing), {
         datagovAgent: newDatagov,
         cbsAgent: newCbs,
     });
